@@ -1,12 +1,15 @@
 package com.example.david.examdsaminim2;
 
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.david.examdsaminim2.Classes.Alumno;
@@ -21,11 +24,11 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 public class Minim2 extends AppCompatActivity {
     //public static final String BASE_URL = "http://147.83.7.206:8080/myapp/";
     //public static final String BASE_URL ="http://localhost:8080/myapp/";
-    public static final String BASE_URL ="http://192.168.1.49:8080/myapp/";
-
+    public static final String BASE_URL ="http://192.168.42.197:8080/myapp/";
     private TrackApi trackServices;
     String tag = "Events";
     EditText txtuser,txtpassword;
+    ProgressBar pb1 = (ProgressBar) findViewById(R.id.determinateBar);
 
     private Call<Alumno> callAlum;
     //Main activity
@@ -44,11 +47,34 @@ public class Minim2 extends AppCompatActivity {
                 .build();
 
     }
+//    public class DelayTask extends AsyncTask<Void, Integer, String> {
+//        int count = 0;
+//        ProgressBar pb;
+//        @Override
+//        protected void onPreExecute() {
+//            pb.setVisibility(ProgressBar.VISIBLE);
+//        }
+//
+//        @Override
+//        protected String doInBackground(Void... params) {
+//            while (count < 5) {
+//                SystemClock.sleep(1000);
+//                count++;
+//                publishProgress(count * 20);
+//            }
+//            return "Complete";
+//        }
+//
+//        @Override
+//        protected void onProgressUpdate(Integer... values) {
+//            pb.setProgress(values[0]);
+//        }
+//    }
+
     public void iniciar (View view){
         String user = txtuser.getText().toString();
         final String insti = txtpassword.getText().toString();
-
-
+        pb1.setVisibility(ProgressBar.VISIBLE);
         callAlum = trackServices.consultarAlumno(user);
         callAlum.enqueue(new Callback<Alumno>() {
             @Override
@@ -60,6 +86,7 @@ public class Minim2 extends AppCompatActivity {
                         Toast.makeText (Minim2.this,"Login correct",Toast.LENGTH_LONG).show();
                         Log.d("onResponse", "onResponse. Code" + Integer.toString(statusCode)+ "resultado:" + alumno);
                         //obri el proxim layoud que obrira el joc
+                        pb1.setVisibility(ProgressBar.INVISIBLE);
                         Intent intentOj = new Intent(Minim2.this, Operacion_Activity.class);
                         startActivity(intentOj);
                     } else{
