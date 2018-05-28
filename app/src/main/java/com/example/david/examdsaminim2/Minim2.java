@@ -22,13 +22,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Minim2 extends AppCompatActivity {
-    //public static final String BASE_URL = "http://147.83.7.206:8080/myapp/";
+    public static final String BASE_URL = "http://147.83.7.206:8080/myapp/";
     //public static final String BASE_URL ="http://localhost:8080/myapp/";
-    public static final String BASE_URL ="http://192.168.42.197:8080/myapp/";
+    //public static final String BASE_URL ="http://192.168.42.197:8080/myapp/";
     private TrackApi trackServices;
     String tag = "Events";
     EditText txtuser,txtpassword;
-    ProgressBar pb1 = (ProgressBar) findViewById(R.id.determinateBar);
+    //ProgressBar pb1 = (ProgressBar) findViewById(R.id.determinateBar);
 
     private Call<Alumno> callAlum;
     //Main activity
@@ -46,6 +46,7 @@ public class Minim2 extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
+        trackServices = retrofit.create(TrackApi.class);
     }
 //    public class DelayTask extends AsyncTask<Void, Integer, String> {
 //        int count = 0;
@@ -74,7 +75,7 @@ public class Minim2 extends AppCompatActivity {
     public void iniciar (View view){
         String user = txtuser.getText().toString();
         final String insti = txtpassword.getText().toString();
-        pb1.setVisibility(ProgressBar.VISIBLE);
+        //pb1.setVisibility(ProgressBar.VISIBLE);
         callAlum = trackServices.consultarAlumno(user);
         callAlum.enqueue(new Callback<Alumno>() {
             @Override
@@ -86,7 +87,7 @@ public class Minim2 extends AppCompatActivity {
                         Toast.makeText (Minim2.this,"Login correct",Toast.LENGTH_LONG).show();
                         Log.d("onResponse", "onResponse. Code" + Integer.toString(statusCode)+ "resultado:" + alumno);
                         //obri el proxim layoud que obrira el joc
-                        pb1.setVisibility(ProgressBar.INVISIBLE);
+                        //pb1.setVisibility(ProgressBar.INVISIBLE);
                         Intent intentOj = new Intent(Minim2.this, Operacion_Activity.class);
                         startActivity(intentOj);
                     } else{
