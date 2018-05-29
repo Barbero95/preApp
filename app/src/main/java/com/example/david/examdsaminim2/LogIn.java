@@ -14,15 +14,7 @@ import android.widget.Toast;
 
 import com.example.david.examdsaminim2.Classes.Alumno;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
-import retrofit2.converter.scalars.ScalarsConverterFactory;
-
-
-public class Minim2 extends AppCompatActivity {
+public class LogIn extends AppCompatActivity {
 
     public static final String BASE_URL = "http://147.83.7.206:8080/myapp/";
     //public static final String BASE_URL ="http://localhost:8080/myapp/";
@@ -35,10 +27,11 @@ public class Minim2 extends AppCompatActivity {
 
     private Call<Alumno> callAlum;
     //Main activity
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_minim2);
+        setContentView(R.layout.activity_log_in);
 
         txtuser = (EditText) findViewById(R.id.alumno);
         txtpassword = (EditText) findViewById(R.id.instituto);
@@ -51,7 +44,6 @@ public class Minim2 extends AppCompatActivity {
 
         trackServices = retrofit.create(TrackApi.class);
     }
-
 
     public void iniciar (View view){
         //inici de la tasca

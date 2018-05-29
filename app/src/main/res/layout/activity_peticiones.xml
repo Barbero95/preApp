@@ -4,61 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Minim2">
+    tools:context=".Peticiones">
 
     <Button
-        android:id="@+id/iniciar"
+        android:id="@+id/lidtaInstisButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="44dp"
+        android:layout_marginBottom="32dp"
         android:layout_marginTop="32dp"
-        android:onClick="iniciar"
-        android:text="Inici"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/instituto" />
-
-    <EditText
-        android:id="@+id/alumno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:onClick="listaInstis"
+        android:text="Lista de Institutos"
+        app:layout_constraintBottom_toTopOf="@+id/listaAlumnosButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
-    <EditText
-        android:id="@+id/instituto"
+    <Button
+        android:id="@+id/listaAlumnosButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:inputType="textPersonName"
+        android:onClick="listaAlumnos"
+        android:text="Lista de Alumnos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textAlumno" />
+        tools:layout_editor_absoluteY="216dp" />
 
-    <TextView
-        android:id="@+id/textAlumno"
+    <Button
+        android:id="@+id/listaOperacionesButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alumno"
-        app:layout_constraintTop_toBottomOf="@+id/alumno"
-        tools:layout_editor_absoluteX="97dp" />
-
-    <TextView
-        android:id="@+id/textInstituto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="Instituto"
-        app:layout_constraintTop_toBottomOf="@+id/instituto"
-        tools:layout_editor_absoluteX="97dp" />
+        android:layout_marginBottom="32dp"
+        android:layout_marginTop="32dp"
+        android:onClick="listaOperaciones"
+        android:text="Lista de Operaciones"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listaAlumnosButton"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ProgressBar
         android:id="@+id/indeterminateBar"
