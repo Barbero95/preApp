@@ -14,6 +14,13 @@ import android.widget.Toast;
 
 import com.example.david.examdsaminim2.Classes.Alumno;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
+
 public class LogIn extends AppCompatActivity {
 
     public static final String BASE_URL = "http://147.83.7.206:8080/myapp/";
@@ -61,7 +68,7 @@ public class LogIn extends AppCompatActivity {
                 Alumno alumno = response.body();
                 if (response.isSuccessful()) {
                     if (alumno.getInstituto().equals(insti)){
-                        Toast.makeText (Minim2.this,"Login correct",Toast.LENGTH_LONG).show();
+                        Toast.makeText (LogIn.this,"Login correct",Toast.LENGTH_LONG).show();
                         Log.d("onResponse", "onResponse. Code" + Integer.toString(statusCode)+ "resultado:" + alumno);
                         //obri el proxim layoud que obrira el joc
                         //pb1.setVisibility(ProgressBar.INVISIBLE);
@@ -69,11 +76,11 @@ public class LogIn extends AppCompatActivity {
                         //al final de la tasca
                         pb1.setVisibility(ProgressBar.INVISIBLE);
 
-                        Intent intentOj = new Intent(Minim2.this, Operacion_Activity.class);
+                        Intent intentOj = new Intent(LogIn.this, Operacion_Activity.class);
                         startActivity(intentOj);
                     } else{
                         Log.d("onResponse", "onResponse. Code" + Integer.toString(statusCode));
-                        Toast.makeText (Minim2.this,"Alumno/Insti erroneos",Toast.LENGTH_LONG).show();
+                        Toast.makeText (LogIn.this,"Alumno/Insti erroneos",Toast.LENGTH_LONG).show();
                     }
 
                 } else {
@@ -82,7 +89,7 @@ public class LogIn extends AppCompatActivity {
                     pb1.setVisibility(ProgressBar.INVISIBLE);
 
                     Log.d("onResponse", "onResponse. Code" + Integer.toString(statusCode));
-                    Toast.makeText (Minim2.this,"Alumno/Insti erroneos",Toast.LENGTH_LONG).show();
+                    Toast.makeText (LogIn.this,"Alumno/Insti erroneos",Toast.LENGTH_LONG).show();
                 }
             }
 

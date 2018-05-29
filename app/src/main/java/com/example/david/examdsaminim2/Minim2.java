@@ -31,7 +31,7 @@ public class Minim2 extends AppCompatActivity {
     String tag = "Events";
     EditText txtuser,txtpassword;
 
-    ProgressBar pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
+    ProgressBar pb1;
 
     private Call<Alumno> callAlum;
     //Main activity
@@ -40,6 +40,7 @@ public class Minim2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_minim2);
 
+        pb1 = (ProgressBar) findViewById(R.id.indeterminateBar);
         txtuser = (EditText) findViewById(R.id.alumno);
         txtpassword = (EditText) findViewById(R.id.instituto);
 
